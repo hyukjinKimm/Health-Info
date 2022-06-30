@@ -1,0 +1,40 @@
+회원가입
+
+    방식:post  
+    url: /auth/join  
+    서버로 넘겨줄 데이터:
+        email,
+        nick,
+        password: hash,
+        gender,
+        age,
+        height,
+        weight,
+
+    서버 응답
+        이미 있는 이메일 -> redirect('/join?error=exist')
+        회원가입 성공 -> redirect('/');
+    
+로그인
+    방식: post
+    url: /auth/login
+    서버로 넘겨줄 데이터:
+    email, password
+
+    서버응답
+    비밀번호 일치 -> redirect('/?loginError=비밀번호가 일치하지 않습니다.');
+    가입되지 않는 회원 -> redirect('/?loginError= 가입되지 않은 회원입니다.');
+
+    로그인 성공 -> redirect('/')
+        이후 모든  요청의 req.user 에 유저 정보가 담겨있음.
+
+
+로그아웃
+  방식: get
+  url: /auth/logout
+  
+  서버응답 -> redirect('/');
+
+
+
+
