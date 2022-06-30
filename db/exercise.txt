@@ -1,0 +1,13 @@
+id:
+    type: integer
+    primary key
+
+name:
+    type: String(50)
+    allowNull: false,
+    unique: true ,
+
+src:
+    type: String(200)
+    allowNull: false
+
