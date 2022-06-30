@@ -24,5 +24,8 @@ module.exports = class Exercise extends Sequelize.Model {
     });
   }
 
-  static associate(db) {}
+  static associate(db) {
+    db.Exercise.belongsToMany(db.Smallpart, { through: 'SmallpartExercise' });
+    db.Exercise.belongsToMany(db.Comment, { through: 'ExerciseComment' });
+  }
 }

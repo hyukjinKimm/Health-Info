@@ -4,7 +4,7 @@ module.exports = class Comment extends Sequelize.Model {
   static init(sequelize) {
     return super.init({
       comment: {
-        tupe: Sequelize.STRING(100),
+        type: Sequelize.STRING(100),
         allowNull: false,
       },
     }, {
@@ -18,6 +18,10 @@ module.exports = class Comment extends Sequelize.Model {
     });
   }
 
-  static associate(db) {}
-  
+  static associate(db) {
+    db.Comment.belongsToMany(db.User, { through: 'UserComment' });
+    db.Comment.belongsToMany(db.Exercise, { through: 'ExerciseComment' });
+    db.Comment.belongsToMany(db.User, { through: 'UserLikeComment' });
+  }
+
 };

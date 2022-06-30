@@ -20,5 +20,8 @@ module.exports = class Bigpart extends Sequelize.Model {
     });
   }
 
-  static associate(db) {}
+  static associate(db) {
+    db.Bigpart.belongsToMany(db.Smallpart, { through: 'BigpartSmallpart' });
+    
+  }
 }
